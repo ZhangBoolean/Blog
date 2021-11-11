@@ -1,61 +1,81 @@
-mysqlÊÂÎñ
-1¡¢mysqlÖĞ£¬ÊÂÎñÆäÊµÊÇÒ»¸ö×îĞ¡µÄµÄ²»¿É·Ö¸îµÄ¹¤×÷µ¥Î»¡£ÊÂÎñÄÜ¹»±£Ö¤Ò»¸öÒµÎñµÄÍêÕûĞÔ
+mysqläº‹åŠ¡
 
+1ã€mysqlä¸­ï¼Œäº‹åŠ¡å…¶å®æ˜¯ä¸€ä¸ªæœ€å°çš„çš„ä¸å¯åˆ†å‰²çš„å·¥ä½œå•ä½ã€‚äº‹åŠ¡èƒ½å¤Ÿä¿è¯ä¸€ä¸ªä¸šåŠ¡çš„å®Œæ•´æ€§
 
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img5/1.png)
 
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img5/2.png)
 
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img5/3.png)
 
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img5/4.png)
 
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img5/5.png)
 
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img5/6.png)
 
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img5/7.png)
 
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img5/8.png)
 
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img5/9.png)
 
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img5/10.png)
 
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img5/11.png)
 
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img5/12.png)
 
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img5/13.png)
 
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img5/14.png)
 
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img5/15.png)
 
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img5/16.png)
 
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img5/17.png)
 
+2ã€äº‹åŠ¡çš„å››å¤§ç‰¹å¾ï¼š
 
+åŸå­æ€§ï¼šäº‹åŠ¡æ˜¯æœ€å°çš„å•ä½ï¼Œä¸å¯ä»¥å†åˆ†å‰²
 
+ä¸€è‡´æ€§ï¼šäº‹åŠ¡è¦æ±‚ï¼ŒåŒä¸€äº‹åŠ¡ä¸­çš„sqlè¯­å¥ï¼Œå¿…é¡»ä¿è¯åŒæ—¶æˆåŠŸæˆ–è€…å…¬å¼å¤±è´¥
 
+éš”ç¦»æ€§ï¼šäº‹åŠ¡1å’Œäº‹åŠ¡2 ä¹‹é—´æ˜¯å…·æœ‰éš”ç¦»æ€§çš„
 
+æŒä¹…æ€§ï¼šäº‹åŠ¡ä¸€æ—¦ç»“æŸï¼ˆcommitï¼Œrollbackï¼‰,å°±ä¸å¯ä»¥è¿”å›
 
+äº‹åŠ¡å¼€å¯ï¼š	
 
+1ã€ä¿®æ”¹é»˜è®¤æäº¤ set autocommit=0;
 
+2ã€begin
 
+3ã€start transaction;
 
-
-
-
-
-
-2¡¢ÊÂÎñµÄËÄ´óÌØÕ÷£º
-Ô­×ÓĞÔ£ºÊÂÎñÊÇ×îĞ¡µÄµ¥Î»£¬²»¿ÉÒÔÔÙ·Ö¸î
-Ò»ÖÂĞÔ£ºÊÂÎñÒªÇó£¬Í¬Ò»ÊÂÎñÖĞµÄsqlÓï¾ä£¬±ØĞë±£Ö¤Í¬Ê±³É¹¦»òÕß¹«Ê½Ê§°Ü
-¸ôÀëĞÔ£ºÊÂÎñ1ºÍÊÂÎñ2 Ö®¼äÊÇ¾ßÓĞ¸ôÀëĞÔµÄ
-³Ö¾ÃĞÔ£ºÊÂÎñÒ»µ©½áÊø£¨commit£¬rollback£©,¾Í²»¿ÉÒÔ·µ»Ø
-
-ÊÂÎñ¿ªÆô£º	
-1¡¢ĞŞ¸ÄÄ¬ÈÏÌá½» set autocommit=0;
-2¡¢begin
-3¡¢start transaction;
-ÊÂÎñÊÖ¶¯Ìá½»£º
+äº‹åŠ¡æ‰‹åŠ¨æäº¤ï¼š
 commit;
-ÊÂÎñÊÖ¶¯»Ø¹ö£º
+
+äº‹åŠ¡æ‰‹åŠ¨å›æ»šï¼š
 rollback;
 
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img5/18.png)
 
 read uncommitted
 
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img5/19.png)
+
 read committed
+
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img5/20.png)
 
 repeatable read
 
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img5/21.png)
+
 serializable
 
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img5/22.png)
 
-
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img5/23.png)
