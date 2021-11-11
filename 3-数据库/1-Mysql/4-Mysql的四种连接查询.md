@@ -1,19 +1,38 @@
-MysqlµÄËÄÖÖÁ¬½Ó²éÑ¯
+Mysqlçš„å››ç§è¿æ¥æŸ¥è¯¢
 
-ÄÚÁ¬½Ó
-ÄÚÁ¬²éÑ¯£¬ÆäÊµ¾ÍÊÇÁ½ÕÅ±íÖĞµÄÊı¾İ£¬Í¨¹ıÄ³¸ö×Ö¶ÎÏà¶Ô£¬²éÑ¯³öÏà¹Ø¼ÇÂ¼Êı¾İ
-inner join »òÕß join
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img4/1.png)
 
-ÍâÁ¬½Ó
-1¡¢×óÁ¬½Ó 
-»á°Ñ×ó±ß±íÀïÃæµÄËùÓĞÊı¾İÈ¡³öÀ´£¬¶øÓÒ±ß±íÖĞµÄÊı¾İ£¬Èç¹ûÓĞÏàµÈµÄ£¬¾ÍÏÔÊ¾³öÀ´£»Èç¹ûÃ»ÓĞ¾Í»á²¹NULL
-left join »òÕß left outer join
+å†…è¿æ¥
 
-2¡¢ÓÒÁ¬½Ó 
-»á°ÑÓÒ±ß±íÀïÃæµÄËùÓĞÊı¾İÈ¡³öÀ´£¬¶ø×ó±ß±íÖĞµÄÊı¾İ£¬Èç¹ûÓĞÏàµÈµÄ£¬¾ÍÏÔÊ¾³öÀ´£»Èç¹ûÃ»ÓĞ¾Í»á²¹NULL
-right join »òÕß right outer join
+å†…è¿æŸ¥è¯¢ï¼Œå…¶å®å°±æ˜¯ä¸¤å¼ è¡¨ä¸­çš„æ•°æ®ï¼Œé€šè¿‡æŸä¸ªå­—æ®µç›¸å¯¹ï¼ŒæŸ¥è¯¢å‡ºç›¸å…³è®°å½•æ•°æ®
 
-3¡¢ÍêÈ«ÍâÁ´½Ó 
-full join »òÕß full outer join
-Mysql²»Ö§³ÖÍêÈ«Á¬½Ó£¬µ«ÊÇ¿ÉÒÔÓÃunionÁ¬½Ó×óÓÒÍâÁ¬½ÓÊµÏÖ
+inner join æˆ–è€… join
+
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img4/2.png)
+
+å¤–è¿æ¥
+
+1ã€å·¦è¿æ¥ 
+
+ä¼šæŠŠå·¦è¾¹è¡¨é‡Œé¢çš„æ‰€æœ‰æ•°æ®å–å‡ºæ¥ï¼Œè€Œå³è¾¹è¡¨ä¸­çš„æ•°æ®ï¼Œå¦‚æœæœ‰ç›¸ç­‰çš„ï¼Œå°±æ˜¾ç¤ºå‡ºæ¥ï¼›å¦‚æœæ²¡æœ‰å°±ä¼šè¡¥NULL
+
+left join æˆ–è€… left outer join
+
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img4/3.png)
+
+2ã€å³è¿æ¥ 
+
+ä¼šæŠŠå³è¾¹è¡¨é‡Œé¢çš„æ‰€æœ‰æ•°æ®å–å‡ºæ¥ï¼Œè€Œå·¦è¾¹è¡¨ä¸­çš„æ•°æ®ï¼Œå¦‚æœæœ‰ç›¸ç­‰çš„ï¼Œå°±æ˜¾ç¤ºå‡ºæ¥ï¼›å¦‚æœæ²¡æœ‰å°±ä¼šè¡¥NULL
+
+right join æˆ–è€… right outer join
+
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img4/4.png)
+
+3ã€å®Œå…¨å¤–é“¾æ¥ 
+
+full join æˆ–è€… full outer join
+
+Mysqlä¸æ”¯æŒå®Œå…¨è¿æ¥ï¼Œä½†æ˜¯å¯ä»¥ç”¨unionè¿æ¥å·¦å³å¤–è¿æ¥å®ç°
+
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img4/5.png)
 
