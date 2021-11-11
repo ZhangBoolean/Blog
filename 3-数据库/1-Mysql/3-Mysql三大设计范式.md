@@ -5,11 +5,11 @@
 必须是满足第一范式的前提下，第二范式要求，除主键外的每一列都必须完全依赖于主键。
 如果要出现不完全依赖，只可能发生在联合主键的情况下。
 
-![image](https://github.com/shaoshuaigege/Blog/tree/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img3/1.png)
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img3/1.png)
 
 拆成三张表
 
-![image](https://github.com/shaoshuaigege/Blog/tree/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img3/2.png)
+![image](https://github.com/shaoshuaigege/Blog/blob/main/3-%E6%95%B0%E6%8D%AE%E5%BA%93/1-Mysql/img/img3/2.png)
 
 三、第三范式		3NF
 必须先满足第二范式，除开主键列的其他列之间不能有依赖关系
@@ -25,7 +25,6 @@ id int primary key,
 name varchar(20),
 phone varchar(15)
 );
-
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
