@@ -10,29 +10,32 @@
          TCP/IP（Transmission Control Protocol/Internet Protocol）即传输控制协议/网间协议，是一个工业标准的协议集，它是为广域网（WANs）设计的。
          UDP（User Data Protocol，用户数据报协议）是与TCP相对应的协议。它是属于TCP/IP协议族中的一种。
         这里有一张图，表明了这些协议的关系。
-
+        
+![image](https://github.com/shaoshuaigege/Blog/blob/main/2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/1-%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/img/img4/1.png)
                                                                                 
 
-                                                                        图1
+                                                                        
 
        TCP/IP协议族包括运输层、网络层、链路层。现在你知道TCP/IP与UDP的关系了吧。
 Socket在哪里呢？
        在图1中，我们没有看到Socket的影子，那么它到底在哪里呢？还是用图来说话，一目了然。
 
 
-
-图2
+![image](https://github.com/shaoshuaigege/Blog/blob/main/2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/1-%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/img/img4/2.png)
 
        原来Socket在这里。
 Socket是什么呢？
+
        Socket是应用层与TCP/IP协议族通信的中间软件抽象层，它是一组接口。在设计模式中，Socket其实就是一个门面模式，它把复杂的TCP/IP协议族隐藏在Socket接口后面，对用户来说，一组简单的接口就是全部，让Socket去组织数据，以符合指定的协议。
+       
 你会使用它们吗？
+
        前人已经给我们做了好多的事了，网络间的通信也就简单了许多，但毕竟还是有挺多工作要做的。以前听到Socket编程，觉得它是比较高深的编程知识，但是只要弄清Socket编程的工作原理，神秘的面纱也就揭开了。
+       
        一个生活中的场景。你要打电话给一个朋友，先拨号，朋友听到电话铃声后提起电话，这时你和你的朋友就建立起了连接，就可以讲话了。等交流结束，挂断电话结束此次交谈。    生活中的场景就解释了这工作原理，也许TCP/IP协议族就是诞生于生活中，这也不一定。
 
       
-
-图3
+![image](https://github.com/shaoshuaigege/Blog/blob/main/2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/1-%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/img/img4/3.png)
 
        先从服务器端说起。服务器端先初始化Socket，然后与端口绑定(bind)，对端口进行监听(listen)，调用accept阻塞，等待客户端连接。在这时如果有个客户端初始化一个Socket，然后连接服务器(connect)，如果连接成功，这时客户端与服务器端的连接就建立了。客户端发送数据请求，服务器端接收请求并处理请求，然后把回应数据发送给客户端，客户端读取数据，最后关闭连接，一次交互结束。
 
@@ -65,6 +68,7 @@ Socket是什么呢？
 6、一个例子
 
 1、网络中进程之间如何通信？
+
 本地的进程间通信（IPC）有很多种方式，但可以总结为下面4类：
 
 消息传递（管道、FIFO、消息队列）
@@ -80,15 +84,19 @@ Socket是什么呢？
 使用TCP/IP协议的应用程序通常采用应用编程接口：UNIX BSD的套接字（socket）和UNIX System V的TLI（已经被淘汰），来实现网络进程之间的通信。就目前而言，几乎所有的应用程序都是采用socket，而现在又是网络时代，网络中进程通信是无处不在，这就是我为什么说“一切皆socket”。
 
 2、什么是Socket？
+
 上面我们已经知道网络中的进程是通过socket来通信的，那什么是socket呢？socket起源于Unix，而Unix/Linux基本哲学之一就是“一切皆文件”，都可以用“打开open –> 读写write/read –> 关闭close”模式来操作。我的理解就是Socket就是该模式的一个实现，socket即是一种特殊的文件，一些socket函数就是对其进行的操作（读/写IO、打开、关闭），这些函数我们在后面进行介绍。
 
 socket一词的起源
+
 在组网领域的首次使用是在1970年2月12日发布的文献IETF RFC33中发现的，撰写者为Stephen Carr、Steve Crocker和Vint Cerf。根据美国计算机历史博物馆的记载，Croker写道：“命名空间的元素都可称为套接字接口。一个套接字接口构成一个连接的一端，而一个连接可完全由一对套接字接口规定。”计算机历史博物馆补充道：“这比BSD的套接字接口定义早了大约12年。”
 
 3、socket的基本操作
+
 既然socket是“open—write/read—close”模式的一种实现，那么socket就提供了这些操作对应的函数接口。下面以TCP为例，介绍几个基本的socket接口函数。
 
 3.1、socket()函数
+
 int socket(int domain, int type, int protocol);
 socket函数对应于普通文件的打开操作。普通文件的打开操作返回一个文件描述字，而socket()用于创建一个socket描述符（socket descriptor），它唯一标识一个socket。这个socket描述字跟文件描述字一样，后续的操作都有用到它，把它作为参数，通过它来进行一些读写操作。
 
@@ -221,8 +229,7 @@ close一个TCP socket的缺省行为时把该socket标记为以关闭，然后�
 客户端再想服务器发一个确认ACK K+1
 只有就完了三次握手，但是这个三次握手发生在socket的那几个函数中呢？请看下图：
 
-image
-
+![image](https://github.com/shaoshuaigege/Blog/blob/main/2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/1-%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/img/img4/4.png)
 图1、socket中发送的TCP三次握手
 
 从图中可以看出，当客户端调用connect时，触发了连接请求，向服务器发送了SYN J包，这时connect进入阻塞状态；服务器监听到连接请求，即收到SYN J包，调用accept函数接收请求向客户端发送SYN K ，ACK J+1，这时accept进入阻塞状态；客户端收到服务器的SYN K ，ACK J+1之后，这时connect返回，并对SYN K进行确认；服务器收到ACK K+1时，accept返回，至此三次握手完毕，连接建立。
@@ -230,10 +237,10 @@ image
 总结：客户端的connect在三次握手的第二个次返回，而服务器端的accept在三次握手的第三次返回。
 
 5、socket中TCP的四次握手释放连接详解
+
 上面介绍了socket中TCP的三次握手建立过程，及其涉及的socket函数。现在我们介绍socket中的四次握手释放连接的过程，请看下图：
 
-image
-
+![image](https://github.com/shaoshuaigege/Blog/blob/main/2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/1-%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/img/img4/5.png)
 图2、socket中发送的TCP四次握手
 
 图示过程如下：
@@ -251,5 +258,5 @@ image
  
 
 6.下面给出实现的一个实例
-
+![image](https://github.com/shaoshuaigege/Blog/blob/main/2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/1-%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/img/img4/6.png)
  
