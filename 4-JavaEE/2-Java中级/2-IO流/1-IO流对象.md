@@ -63,7 +63,7 @@ public class TestFile {
         System.out.println("注意： 需要在D:\\LOLFolder确实存在一个LOL.exe,\r\n才可以看到对应的文件长度、修改时间等信息");
     }
 }
-
+ 
 三、文件常用方法2
 
 package file;
