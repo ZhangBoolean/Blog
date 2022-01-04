@@ -1,3 +1,4 @@
+一、异常
 1、什么是异常？
 
 导致程序的正常流程被中断的事件，叫做异常
@@ -11,9 +12,145 @@ ArithmeticException 除数为零
 NullPointerException 空指针异常
 FileNotFoundException 文件不存在异常
 
-3、异常分类
 
-  在 Java 中，所有的异常都有一个共同的祖先 Throwable（可抛出）。Throwable 指定代码中可用异常传播机制通过 Java 应用程序传输的任何问题的共性。
+
+二、异常分类： 
+
+可查异常，运行时异常和错误3种
+其中，运行时异常和错误又叫非可查异常
+
+1、可查异常
+
+可查异常： CheckedException
+可查异常即必须进行处理的异常，要么try catch住,要么往外抛，谁调用，谁处理，比如 FileNotFoundException
+如果不处理，编译器，就不让你通过
+
+package exception;
+  
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+  
+public class TestException {
+  
+    public static void main(String[] args) {
+          
+        File f= new File("d:/LOL.exe");
+          
+        try{
+            System.out.println("试图打开 d:/LOL.exe");
+            new FileInputStream(f);
+            System.out.println("成功打开");
+        }
+        catch(FileNotFoundException e){
+            System.out.println("d:/LOL.exe不存在");
+            e.printStackTrace();
+        }
+          
+    }
+}
+
+2、运行时异常
+
+运行时异常RuntimeException指： 不是必须进行try catch的异常
+常见运行时异常:
+除数不能为0异常:ArithmeticException
+下标越界异常:ArrayIndexOutOfBoundsException
+空指针异常:NullPointerException
+在编写代码的时候，依然可以使用try catch throws进行处理，与可查异常不同之处在于，即便不进行try catch，也不会有编译错误
+Java之所以会设计运行时异常的原因之一，是因为下标越界，空指针这些运行时异常太过于普遍，如果都需要进行捕捉，代码的可读性就会变得很糟糕。
+
+package exception;
+  
+public class TestException {
+  
+    public static void main(String[] args) {
+         
+        //任何除数不能为0:ArithmeticException
+        int k = 5/0;
+         
+        //下标越界异常：ArrayIndexOutOfBoundsException
+        int j[] = new int[5];
+        j[10] = 10;
+         
+        //空指针异常：NullPointerException
+        String str = null;
+        str.length();
+   }
+}
+
+3、错误
+
+错误Error，指的是系统级别的异常，通常是内存用光了
+在默认设置下，一般java程序启动的时候，最大可以使用16m的内存
+如例不停的给StringBuffer追加字符，很快就把内存使用光了。抛出OutOfMemoryError
+与运行时异常一样，错误也是不要求强制捕捉的
+
+package exception;
+  
+public class TestException {
+  
+    public static void main(String[] args) {
+     
+        StringBuffer sb =new StringBuffer();
+         
+        for (int i = 0; i < Integer.MAX_VALUE; i++) {
+            sb.append('a');
+        }
+         
+    }
+ 
+}
+
+4、三种分类
+
+总体上异常分三类：
+1. 错误
+2. 运行时异常
+3. 可查异常
+
+5、练习-异常分类 
+
+运行时异常 RuntimeException，能否被捕捉？
+
+错误Error，能否被捕捉？
+
+面试题常问题：: 运行时异常与非运行时异常的区别：
+运行时异常是不可查异常，不需要进行显式的捕捉
+非运行时异常是可查异常，必须进行显式的捕捉，或者抛出
+
+不要答成：
+运行时异常是运行的时候抛出的异常，非运行时异常，不运行也能抛出
+
+package exception;
+ 
+public class TestException {
+ 
+    public static void main(String[] args) {
+ 
+        String str = null;
+ 
+        try {
+            str.toString();
+        } catch (NullPointerException e) {
+            System.out.println("捕捉到运行时异常: NullPointerException ");
+        }
+ 
+        StringBuffer sb = new StringBuffer("1234567890");
+        try {
+            for (int i = 0; i < 100; i++) {
+                sb.append(sb.toString());
+            }
+        } catch (OutOfMemoryError e) {
+            System.out.println("捕捉到内存用光错误:  OutOfMemoryError");
+        }
+ 
+    }
+}
+
+三、异常分类扩展
+
+在 Java 中，所有的异常都有一个共同的祖先 Throwable（可抛出）。Throwable 指定代码中可用异常传播机制通过 Java 应用程序传输的任何问题的共性。
        Throwable： 有两个重要的子类：Exception（异常）和 Error（错误），二者都是 Java 异常处理的重要子类，各自都包含大量子类。
 
        Error（错误）:是程序无法处理的错误，表示运行应用程序中较严重问题。大多数错误与代码编写者执行的操作无关，而表示代码运行时 JVM（Java 虚拟机）出现的问题。例如，Java虚拟机运行错误（Virtual MachineError），当 JVM 不再有继续执行操作所需的内存资源时，将出现 OutOfMemoryError。这些异常发生时，Java虚拟机（JVM）一般会选择线程终止。
