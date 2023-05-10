@@ -4,7 +4,7 @@
 
 2、通过请求和响应的交换达成通信
 
-![image](https://github.com/shaoshuaigege/Blog/blob/main/2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E3%80%8A%E5%9B%BE%E8%A7%A3HTTP%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/img/img2/1.png)
+![image](2-计算机网络/3-图解HTTP学习笔记/img/img1/1.png)
 
 
 3、HTTP是不保存状态的协议
