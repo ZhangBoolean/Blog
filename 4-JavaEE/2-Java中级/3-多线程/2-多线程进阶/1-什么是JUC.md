@@ -15,7 +15,9 @@
     b、实现Runnable接口
     c、实现callable接口
 
-    （为什么说Java 无法开启一条线程）![Alt text](img/1.png)
+    （为什么说Java 无法开启一条线程）
+
+![](image/1-什么是JUC/1.png)
 
     方法加了同步锁，把当前线程加入线程组后调用了start0()方法，start0()为本地方法，是属于底层的C++ ，所以说Java 无法直接操作硬件生成线程。
 
