@@ -34,3 +34,27 @@
 5 线程有几个状态
 
 ![1701667346638](image/1-什么是JUC/1701667346638.png)
+    
+    a、新生        NEW
+    b、运行        RUNNABLE
+    c、阻塞        BLOCKED
+    d、等待        WAITING
+    e、超时等待    TIMED_WAITING 
+    f、终止        TERMINATED
+
+6 wait和sleep的区别
+
+    // 业务代码中需要休眠
+    TimeUnit.DAYS.sleep(1);    // 休眠1天
+    TimeUnit.SECINDS.sleep(2); // 休眠2分钟
+
+    a、来自不同的类 
+        wait  来自 Object类
+        sleep 来自 Thread接口
+    b、关于锁的释放
+        wait    会释放锁
+        sleep   不会释放锁
+    c、使用的范围是不同的
+        wait    必须在同步代码块中
+        sleep   可以在任何地方睡
+
