@@ -1,8 +1,12 @@
-一、business文件夹(顾名思义：业务工具类的集合)
+business文件夹(顾名思义：业务工具类的集合)
 
 1、DictUtils类
+使用此工具类便捷查询字典表
 
-项目使用tm_dict表作为项目的字典表
+项目使用tm_dict表作为字典表
+![img.png](../img/img1/4.png)
+
+
 
 @Component
 public class DictUtils {
