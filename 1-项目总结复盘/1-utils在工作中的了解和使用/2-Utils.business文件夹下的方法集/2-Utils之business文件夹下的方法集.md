@@ -1,6 +1,6 @@
-一、business(顾名思义：业务工具类的集合)
+一、business文件夹(顾名思义：业务工具类的集合)
 
-1、DictUtils
+1、DictUtils类
 
 项目使用tm_dict表作为项目的字典表
 
@@ -60,5 +60,4 @@ public class DictUtils {
 }
 
 2、FileRecordUtils
-
 
