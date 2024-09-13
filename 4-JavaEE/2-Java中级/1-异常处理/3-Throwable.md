@@ -3,27 +3,26 @@ Throwable是类，Exception和Error都继承了该类
 如图： 异常分Error和Exception
 Exception里又分运行时异常和可查异常。
 
-package exception;
+    package exception;
+     
+    import java.io.File;
+    import java.io.FileInputStream;
  
-import java.io.File;
-import java.io.FileInputStream;
+    public class TestException {
  
-public class TestException {
- 
-    public static void main(String[] args) {
- 
-        File f = new File("d:/LOL.exe");
- 
-        try {
-            new FileInputStream(f);
-            //使用Throwable进行异常捕捉
-        } catch (Throwable t) {
-            // TODO Auto-generated catch block
-            t.printStackTrace();
+        public static void main(String[] args) {
+     
+            File f = new File("d:/LOL.exe");
+     
+            try {
+                new FileInputStream(f);
+                //使用Throwable进行异常捕捉
+            } catch (Throwable t) {
+                // TODO Auto-generated catch block
+                t.printStackTrace();
+            }
         }
- 
     }
-}
 
 2、练习-Throwable
 
@@ -37,24 +36,23 @@ public class TestException {
 但是这样的设计方法做不好，因为不知道抛出的类型到底是哪种具体问题，无法针对性的处理。
 
 
-package exception;
- 
-import java.io.File;
-import java.io.FileInputStream;
- 
-public class TestException {
- 
-    public static void method() throws Throwable {
-        File f = new File("d:/LOL.exe");
-        new FileInputStream(f);
-    }
- 
-    public static void main(String[] args) {
-        try {
-            method();
-        } catch (Throwable e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+    package exception;
+     
+    import java.io.File;
+    import java.io.FileInputStream;
+     
+    public class TestException {
+        public static void method() throws Throwable {
+            File f = new File("d:/LOL.exe");
+            new FileInputStream(f);
+        }
+    
+        public static void main(String[] args) {
+            try {
+                method();
+            } catch (Throwable e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
     }
-}

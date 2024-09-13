@@ -60,24 +60,24 @@ public class TestException {
 在编写代码的时候，依然可以使用try catch throws进行处理，与可查异常不同之处在于，即便不进行try catch，也不会有编译错误
 Java之所以会设计运行时异常的原因之一，是因为下标越界，空指针这些运行时异常太过于普遍，如果都需要进行捕捉，代码的可读性就会变得很糟糕。
 
-package exception;
+    package exception;
+          
+    public class TestException {
   
-public class TestException {
-  
-    public static void main(String[] args) {
-         
-        //任何除数不能为0:ArithmeticException
-        int k = 5/0;
-         
-        //下标越界异常：ArrayIndexOutOfBoundsException
-        int j[] = new int[5];
-        j[10] = 10;
-         
-        //空指针异常：NullPointerException
-        String str = null;
-        str.length();
-   }
-}
+        public static void main(String[] args) {
+             
+            //任何除数不能为0:ArithmeticException
+            int k = 5/0;
+             
+            //下标越界异常：ArrayIndexOutOfBoundsException
+            int j[] = new int[5];
+            j[10] = 10;
+             
+            //空指针异常：NullPointerException
+            String str = null;
+            str.length();
+       }
+    }
 
 3、错误
 
@@ -86,21 +86,20 @@ public class TestException {
 如例不停的给StringBuffer追加字符，很快就把内存使用光了。抛出OutOfMemoryError
 与运行时异常一样，错误也是不要求强制捕捉的
 
-package exception;
+    package exception;
+      
+    public class TestException {
   
-public class TestException {
-  
-    public static void main(String[] args) {
-     
-        StringBuffer sb =new StringBuffer();
+        public static void main(String[] args) {
          
-        for (int i = 0; i < Integer.MAX_VALUE; i++) {
-            sb.append('a');
+            StringBuffer sb =new StringBuffer();
+             
+            for (int i = 0; i < Integer.MAX_VALUE; i++) {
+                sb.append('a');
+            }
+             
         }
-         
     }
- 
-}
 
 4、三种分类
 
@@ -122,31 +121,30 @@ public class TestException {
 不要答成：
 运行时异常是运行的时候抛出的异常，非运行时异常，不运行也能抛出
 
-package exception;
+    package exception;
+
+    public class TestException {
  
-public class TestException {
- 
-    public static void main(String[] args) {
- 
-        String str = null;
- 
-        try {
-            str.toString();
-        } catch (NullPointerException e) {
-            System.out.println("捕捉到运行时异常: NullPointerException ");
-        }
- 
-        StringBuffer sb = new StringBuffer("1234567890");
-        try {
-            for (int i = 0; i < 100; i++) {
-                sb.append(sb.toString());
+        public static void main(String[] args) {
+     
+            String str = null;
+     
+            try {
+                str.toString();
+            } catch (NullPointerException e) {
+                System.out.println("捕捉到运行时异常: NullPointerException ");
             }
-        } catch (OutOfMemoryError e) {
-            System.out.println("捕捉到内存用光错误:  OutOfMemoryError");
+     
+            StringBuffer sb = new StringBuffer("1234567890");
+            try {
+                for (int i = 0; i < 100; i++) {
+                    sb.append(sb.toString());
+                }
+            } catch (OutOfMemoryError e) {
+                System.out.println("捕捉到内存用光错误:  OutOfMemoryError");
+            }
         }
- 
     }
-}
 
 三、异常分类扩展
 
