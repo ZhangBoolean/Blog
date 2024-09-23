@@ -8,64 +8,73 @@ Writer字符输出流
 
 FileReader 是Reader子类，以FileReader 为例进行文件读取
 
-package stream;
- 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
- 
-public class TestStream {
- 
-    public static void main(String[] args) {
-        // 准备文件lol.txt其中的内容是AB
-        File f = new File("d:/lol.txt");
-        // 创建基于文件的Reader
-        try (FileReader fr = new FileReader(f)) {
-            // 创建字符数组，其长度就是文件的长度
-            char[] all = new char[(int) f.length()];
-            // 以字符流的形式读取文件所有内容
-            fr.read(all);
-            for (char b : all) {
-                // 打印出来是A B
-                System.out.println(b);
+    package stream;
+    import java.io.File;
+    import java.io.FileReader;
+    import java.io.IOException;
+     
+    public class TestStream {
+     
+        public static void main(String[] args) {
+            // 准备文件lol.txt其中的内容是AB
+            File f = new File("d:/lol.txt");
+            // 创建基于文件的Reader
+            try (FileReader fr = new FileReader(f)) {
+                // 创建字符数组，其长度就是文件的长度
+                char[] all = new char[(int) f.length()];
+                // 以字符流的形式读取文件所有内容
+                fr.read(all);
+                for (char b : all) {
+                    // 打印出来是A B
+                    System.out.println(b);
+                }
+            //关闭流
+            fr.close();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         }
- 
     }
-}
 
 2、使用字符流把字符串写入到文件
 
 FileWriter 是Writer的子类，以FileWriter 为例把字符串写入到文件
 
-package stream;
-  
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-  
-public class TestStream {
-  
-    public static void main(String[] args) {
-        // 准备文件lol2.txt
-        File f = new File("d:/lol2.txt");
-        // 创建基于文件的Writer
-        try (FileWriter fr = new FileWriter(f)) {
-            // 以字符流的形式把数据写入到文件中
-            String data="abcdefg1234567890";
-            char[] cs = data.toCharArray();
-            fr.write(cs);
-  
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+    package stream;
+      
+    import java.io.File;
+    import java.io.FileWriter;
+    import java.io.IOException;
+      
+    public class TestStream {
+      
+        public static void main(String[] args) {
+            // 准备文件lol2.txt
+            File f = new File("d:/lol2.txt");
+            // 创建基于文件的Writer
+            try (FileWriter fr = new FileWriter(f)) {
+                // 以字符流的形式把数据写入到文件中
+                String data="abcdefg1234567890";
+                char[] cs = data.toCharArray();
+                fr.write(cs);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
-  
     }
-}
+
+**
+56行 try后面加（）的用法：
+
+    属于Java7的新特性。
+    经常会⽤try-catch来捕获有可能抛出异常的代码。如果其中还涉及到资源的使⽤的话，最后在finally块中显⽰的释放掉有可能被占⽤的资源。
+    但是如果资源类已经实现了AutoCloseable这个接⼝的话，可以在try()括号中可以写操作资源的语句(IO操作)，会在程序块结束时⾃动释放掉
+    占⽤的资源，不⽤再在finally块中⼿动释放了。
+    
+    在try的作用域里关闭文件输入流，在前面的示例中都是使用这种方式，这样做有一个弊端；
+    如果文件不存在，或者读取的时候出现问题而抛出异常，那么就不会执行这一行关闭流的代码，存在巨大的资源占用隐患。
 
 3、文件加密 
 
@@ -88,78 +97,78 @@ public static void encodeFile(File encodingFile, File encodedFile);
 比如',&^ 保留不变，中文也保留不变
 建议： 使用以前学习的练习题中的某个Java文件，比如循环练习，就有很多的字符和数字
 
-package stream;
- 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
- 
-public class TestStream {
-    /**
-     *
-     * @param encodingFile
-     *            被加密的文件
-     * @param encodedFile
-     *            加密后保存的位置
-     */
-    public static void encodeFile(File encodingFile, File encodedFile) {
- 
-        try (FileReader fr = new FileReader(encodingFile); FileWriter fw = new FileWriter(encodedFile)) {
-            // 读取源文件
-            char[] fileContent = new char[(int) encodingFile.length()];
-            fr.read(fileContent);
-            System.out.println("加密前的内容：");
-            System.out.println(new String(fileContent));
- 
-            // 进行加密
-            encode(fileContent);
-            // 把加密后的内容保存到目标文件
-            System.out.println("加密后的内容：");
-            System.out.println(new String(fileContent));
- 
-            fw.write(fileContent);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
- 
-    private static void encode(char[] fileContent) {
-        for (int i = 0; i < fileContent.length; i++) {
-            char c = fileContent[i];
-            if (isLetterOrDigit(c)) {
-                switch (c) {
-                case '9':
-                    c = '0';
-                    break;
-                case 'z':
-                    c = 'a';
-                    break;
-                case 'Z':
-                    c = 'A';
-                    break;
-                default:
-                    c++;
-                    break;
-                }
+    package stream;
+     
+    import java.io.File;
+    import java.io.FileReader;
+    import java.io.FileWriter;
+    import java.io.IOException;
+     
+    public class TestStream {
+        /**
+         *
+         * @param encodingFile
+         *            被加密的文件
+         * @param encodedFile
+         *            加密后保存的位置
+         */
+        public static void encodeFile(File encodingFile, File encodedFile) {
+     
+            try (FileReader fr = new FileReader(encodingFile); FileWriter fw = new FileWriter(encodedFile)) {
+                // 读取源文件
+                char[] fileContent = new char[(int) encodingFile.length()];
+                fr.read(fileContent);
+                System.out.println("加密前的内容：");
+                System.out.println(new String(fileContent));
+     
+                // 进行加密
+                encode(fileContent);
+                // 把加密后的内容保存到目标文件
+                System.out.println("加密后的内容：");
+                System.out.println(new String(fileContent));
+     
+                fw.write(fileContent);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
-            fileContent[i] = c;
+        }
+     
+        private static void encode(char[] fileContent) {
+            for (int i = 0; i < fileContent.length; i++) {
+                char c = fileContent[i];
+                if (isLetterOrDigit(c)) {
+                    switch (c) {
+                    case '9':
+                        c = '0';
+                        break;
+                    case 'z':
+                        c = 'a';
+                        break;
+                    case 'Z':
+                        c = 'A';
+                        break;
+                    default:
+                        c++;
+                        break;
+                    }
+                }
+                fileContent[i] = c;
+            }
+        }
+     
+        public static boolean isLetterOrDigit(char c) {
+            // 不使用Character类的isLetterOrDigit方法是因为，中文也会被判断为字母
+            String letterOrDigital = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+            return -1 == letterOrDigital.indexOf(c) ? false : true;
+        }
+     
+        public static void main(String[] args) {
+            File encodingFile = new File("E:/project/j2se/src/Test1.txt");
+            File encodedFile = new File("E:/project/j2se/src/Test2.txt");
+            encodeFile(encodingFile, encodedFile);
         }
     }
- 
-    public static boolean isLetterOrDigit(char c) {
-        // 不使用Character类的isLetterOrDigit方法是因为，中文也会被判断为字母
-        String letterOrDigital = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-        return -1 == letterOrDigital.indexOf(c) ? false : true;
-    }
- 
-    public static void main(String[] args) {
-        File encodingFile = new File("E:/project/j2se/src/Test1.txt");
-        File encodedFile = new File("E:/project/j2se/src/Test2.txt");
-        encodeFile(encodingFile, encodedFile);
-    }
-}
 
 4、文件解密
 
@@ -181,76 +190,76 @@ public static void decodeFile(File decodingFile, File decodedFile);
 非字母字符：
 比如',&^ 保留不变，中文也保留不变
 
-package stream;
- 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
- 
-public class TestStream {
- 
-    /**
-     *
-     * @param decodingFile
-     *            被解密的文件
-     * @param decodedFile
-     *            解密后保存的位置
-     */
-    public static void decodeFile(File decodingFile, File decodedFile) {
- 
-        try (FileReader fr = new FileReader(decodingFile); FileWriter fw = new FileWriter(decodedFile)) {
-            // 读取源文件
-            char[] fileContent = new char[(int) decodingFile.length()];
-            fr.read(fileContent);
-            System.out.println("源文件的内容:");
-            System.out.println(new String(fileContent));
-            // 进行解密
-            decode(fileContent);
-            System.out.println("解密后的内容:");
-            System.out.println(new String(fileContent));
-            // 把解密后的内容保存到目标文件
-            fw.write(fileContent);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
- 
-    private static void decode(char[] fileContent) {
-        for (int i = 0; i < fileContent.length; i++) {
-            char c = fileContent[i];
-            if (isLetterOrDigit(c)) {
-                switch (c) {
-                case '0':
-                    c = '9';
-                    break;
-                case 'a':
-                    c = 'z';
-                    break;
-                case 'A':
-                    c = 'Z';
-                    break;
-                default:
-                    c--;
-                    break;
-                }
+    package stream;
+     
+    import java.io.File;
+    import java.io.FileReader;
+    import java.io.FileWriter;
+    import java.io.IOException;
+     
+    public class TestStream {
+     
+        /**
+         *
+         * @param decodingFile
+         *            被解密的文件
+         * @param decodedFile
+         *            解密后保存的位置
+         */
+        public static void decodeFile(File decodingFile, File decodedFile) {
+     
+            try (FileReader fr = new FileReader(decodingFile); FileWriter fw = new FileWriter(decodedFile)) {
+                // 读取源文件
+                char[] fileContent = new char[(int) decodingFile.length()];
+                fr.read(fileContent);
+                System.out.println("源文件的内容:");
+                System.out.println(new String(fileContent));
+                // 进行解密
+                decode(fileContent);
+                System.out.println("解密后的内容:");
+                System.out.println(new String(fileContent));
+                // 把解密后的内容保存到目标文件
+                fw.write(fileContent);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
-            fileContent[i] = c;
+        }
+     
+        private static void decode(char[] fileContent) {
+            for (int i = 0; i < fileContent.length; i++) {
+                char c = fileContent[i];
+                if (isLetterOrDigit(c)) {
+                    switch (c) {
+                    case '0':
+                        c = '9';
+                        break;
+                    case 'a':
+                        c = 'z';
+                        break;
+                    case 'A':
+                        c = 'Z';
+                        break;
+                    default:
+                        c--;
+                        break;
+                    }
+                }
+                fileContent[i] = c;
+            }
+        }
+     
+        public static boolean isLetterOrDigit(char c) {
+            // 不使用Character类的isLetterOrDigit方法是因为，中文也会被判断为字母
+            String letterOrDigital ="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+            return -1 == letterOrDigital.indexOf(c) ? false : true;
+        }
+     
+        public static void main(String[] args) {
+            File decodingFile = new File("E:/project/j2se/src/Test2.txt");
+            File decodedFile = new File("E:/project/j2se/src/Test1.txt");
+     
+            decodeFile(decodingFile, decodedFile);
+     
         }
     }
- 
-    public static boolean isLetterOrDigit(char c) {
-        // 不使用Character类的isLetterOrDigit方法是因为，中文也会被判断为字母
-        String letterOrDigital ="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-        return -1 == letterOrDigital.indexOf(c) ? false : true;
-    }
- 
-    public static void main(String[] args) {
-        File decodingFile = new File("E:/project/j2se/src/Test2.txt");
-        File decodedFile = new File("E:/project/j2se/src/Test1.txt");
- 
-        decodeFile(decodingFile, decodedFile);
- 
-    }
-}
