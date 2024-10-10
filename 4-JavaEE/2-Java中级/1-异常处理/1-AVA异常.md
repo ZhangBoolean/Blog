@@ -4,13 +4,14 @@
 导致程序的正常流程被中断的事件，叫做异常
 
 2、遇到过的异常
-ParseException 解析异常，日期字符串转换为日期对象的时候，有可能抛出的异常
-OutOfIndexException 数组下标越界异常
-OutOfMemoryError 内存不足
-ClassCastException 类型转换异常
-ArithmeticException 除数为零
-NullPointerException 空指针异常
-FileNotFoundException 文件不存在异常
+
+    ParseException 解析异常，日期字符串转换为日期对象的时候，有可能抛出的异常
+    OutOfIndexException 数组下标越界异常
+    OutOfMemoryError 内存不足
+    ClassCastException 类型转换异常
+    ArithmeticException 除数为零
+    NullPointerException 空指针异常
+    FileNotFoundException 文件不存在异常
 
 
 
@@ -22,57 +23,47 @@ FileNotFoundException 文件不存在异常
 1、可查异常
 
 可查异常： CheckedException
+
 可查异常即必须进行处理的异常，要么try catch住,要么往外抛，谁调用，谁处理，比如 FileNotFoundException
+
 如果不处理，编译器，就不让你通过
 
-package exception;
-  
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-  
-public class TestException {
-  
-    public static void main(String[] args) {
-          
-        File f= new File("d:/LOL.exe");
-          
-        try{
-            System.out.println("试图打开 d:/LOL.exe");
-            new FileInputStream(f);
-            System.out.println("成功打开");
+    import java.io.File;
+    import java.io.FileInputStream;
+    import java.io.FileNotFoundException;
+    public class TestException {
+        public static void main(String[] args) {
+            File f= new File("d:/LOL.exe");
+            try{
+                System.out.println("试图打开 d:/LOL.exe");
+                new FileInputStream(f);
+                System.out.println("成功打开");
+            }
+            catch(FileNotFoundException e){
+                System.out.println("d:/LOL.exe不存在");
+                e.printStackTrace();
+            }
         }
-        catch(FileNotFoundException e){
-            System.out.println("d:/LOL.exe不存在");
-            e.printStackTrace();
-        }
-          
     }
-}
 
 2、运行时异常
 
 运行时异常RuntimeException指： 不是必须进行try catch的异常
-常见运行时异常:
-除数不能为0异常:ArithmeticException
-下标越界异常:ArrayIndexOutOfBoundsException
-空指针异常:NullPointerException
-在编写代码的时候，依然可以使用try catch throws进行处理，与可查异常不同之处在于，即便不进行try catch，也不会有编译错误
-Java之所以会设计运行时异常的原因之一，是因为下标越界，空指针这些运行时异常太过于普遍，如果都需要进行捕捉，代码的可读性就会变得很糟糕。
 
-    package exception;
-          
+    常见运行时异常:
+    除数不能为0异常:ArithmeticException
+    下标越界异常:ArrayIndexOutOfBoundsException
+    空指针异常:NullPointerException
+    在编写代码的时候，依然可以使用try catch throws进行处理，与可查异常不同之处在于，即便不进行try catch，也不会有编译错误
+    Java之所以会设计运行时异常的原因之一，是因为下标越界，空指针这些运行时异常太过于普遍，如果都需要进行捕捉，代码的可读性就会变得很糟糕。
+
     public class TestException {
-  
         public static void main(String[] args) {
-             
             //任何除数不能为0:ArithmeticException
             int k = 5/0;
-             
             //下标越界异常：ArrayIndexOutOfBoundsException
             int j[] = new int[5];
             j[10] = 10;
-             
             //空指针异常：NullPointerException
             String str = null;
             str.length();
