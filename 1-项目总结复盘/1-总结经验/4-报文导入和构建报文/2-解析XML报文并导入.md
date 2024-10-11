@@ -57,7 +57,7 @@
         private String quota;
     }
 
-![img.png](../img/img1.png)
+![img.png](../../img/img1.png)
 
 
 调用readXml公共方法，即可解析xml报文中的数据到对象中
